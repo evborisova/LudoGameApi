@@ -16,6 +16,7 @@ steps:
 - checkout: self
   clean: false
   fetchDepth: 5
+  submodules: true
   lfs: true
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
