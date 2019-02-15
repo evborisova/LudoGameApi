@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LudoGameEngine;
 using LudoWebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,15 +12,15 @@ namespace LudoWebApi.Controllers
     {
         private ILudoGameContainer ludoGames;
         private IGameIdGenerator gameIdGenerator;
-        private readonly ILogger _logger;  
+        private readonly ILogger _logger;
 
 
-        //public LudoController(ILudoGameContainer lgc, IGameIdGenerator gid)
-        public LudoController(ILogger<LudoController> l)
+        public LudoController(ILudoGameContainer lgc, IGameIdGenerator gid, ILogger<LudoController> l)
+        //public LudoController(ILogger<LudoController> l)
         {
             _logger = l;
-            ludoGames = new LudoGameContainer(new Diece());
-            gameIdGenerator = new GameIdGenerator();
+            ludoGames = lgc;
+            gameIdGenerator = gid;
         }
 
         // GET: api/Ludo
