@@ -18,6 +18,8 @@ steps:
   fetchDepth: 5
   submodules: true
   lfs: true
-- script: dotnet build --configuration $(buildConfiguration)
+- script: |
+    dotnet build --configuration $(buildConfiguration)
+    dotnet publish --configuration $(buildConfiguration) --output $BUILD_ARTIFACTSTAGINGDIRECTORY
   displayName: 'dotnet build $(buildConfiguration)'
 - task: PublishBuildArtifacts@1
